@@ -92,19 +92,64 @@ function giftEmail(firstName) {
   return { subject, text, html };
 }
 
-async function sendGiftEmail(to, firstName) {
+// Same branded shell as the gift email, with the waitlist confirmation copy.
+function waitlistEmail() {
+  const subject = "You're on the Memory Companion waitlist";
+  const text = [
+    "Thank you for joining the Memory Companion waitlist.",
+    '',
+    "We'll email you the moment beta spots open. Beta spots are limited, and there's no payment until then.",
+    '',
+    'Thanks,',
+    'Lee',
+    'Memory Companion',
+    'memorycompanion.co.uk',
+  ].join('\n');
+
+  const html = `<!DOCTYPE html>
+<html lang="en-GB">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${escapeHtml(subject)}</title></head>
+<body style="margin:0;padding:0;background:#F3EEE4;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3EEE4;padding:32px 12px;">
+  <tr><td align="center">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#FFFDF9;border-radius:18px;padding:36px 36px 32px;font-family:'Public Sans',Arial,Helvetica,sans-serif;color:#2A2724;font-size:17px;line-height:1.65;">
+      <tr><td style="padding-bottom:24px;">
+        <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+          <td style="width:30px;height:30px;border-radius:50%;background:#B9822E;background-image:linear-gradient(160deg,#B9822E 0%,#3F6B70 100%);font-size:0;line-height:0;">&nbsp;</td>
+          <td style="padding-left:10px;font-family:Georgia,'Times New Roman',serif;font-size:20px;font-weight:500;color:#2A2724;">Memory Companion</td>
+        </tr></table>
+      </td></tr>
+      <tr><td style="font-family:Georgia,'Times New Roman',serif;font-size:26px;line-height:1.2;font-weight:500;color:#2A2724;padding-bottom:18px;">You're on the waitlist.</td></tr>
+      <tr><td style="padding-bottom:16px;color:#2A2724;">Thank you for joining the Memory Companion waitlist.</td></tr>
+      <tr><td style="padding-bottom:16px;color:#2A2724;">We'll email you the moment beta spots open. Beta spots are limited, and there's no payment until then.</td></tr>
+      <tr><td style="padding-bottom:4px;">Thanks,</td></tr>
+      <tr><td style="font-family:Georgia,'Times New Roman',serif;font-size:18px;color:#2A2724;">Lee</td></tr>
+      <tr><td style="font-size:14px;color:#5B564E;padding-top:4px;">Memory Companion</td></tr>
+      <tr><td style="border-top:1px solid #E2D8C6;padding-top:18px;margin-top:20px;font-size:13px;color:#5B564E;">
+        <a href="https://memorycompanion.co.uk" style="color:#2C4C50;text-decoration:none;">memorycompanion.co.uk</a>
+        &nbsp;·&nbsp; Calls are private to your family.
+      </td></tr>
+    </table>
+  </td></tr>
+</table>
+</body>
+</html>`;
+
+  return { subject, text, html };
+}
+
+async function sendEmail(to, mail) {
   const apiKey = clean(process.env.RESEND_API_KEY);
   const from = clean(process.env.GIFT_EMAIL_FROM) || 'Memory Companion <hello@memorycompanion.co.uk>';
   if (!apiKey) throw new Error('RESEND_API_KEY is not set');
 
-  const { subject, text, html } = giftEmail(firstName);
   const resp = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${apiKey}`,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ from, to: [to], subject, text, html })
+    body: JSON.stringify({ from, to: [to], subject: mail.subject, text: mail.text, html: mail.html })
   });
   if (!resp.ok) {
     throw new Error(`Resend responded ${resp.status}: ${await resp.text()}`);
@@ -203,15 +248,15 @@ export default async function handler(req, res) {
     });
 
     if (insertRes.status === 201) {
-      if (type === 'gift') {
-        // The reservation is saved at this point. If the email fails, log it
-        // so it can be resent by hand; don't ask the giver to try again.
-        try {
-          await sendGiftEmail(row.email, row.recipient_first_name);
-        } catch (err) {
-          console.error('Gift confirmation email failed', err);
-        }
-        return res.status(200).json({ success: true, duplicate: false });
+      // The sign-up is saved at this point. If the email fails, log it so it
+      // can be resent by hand; don't ask the person to try again.
+      try {
+        const mail = type === 'gift'
+          ? giftEmail(row.recipient_first_name)
+          : waitlistEmail();
+        await sendEmail(row.email, mail);
+      } catch (err) {
+        console.error(`${type} confirmation email failed`, err);
       }
       return res.status(200).json({ success: true, duplicate: false });
     }
