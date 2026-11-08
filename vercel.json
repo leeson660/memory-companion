@@ -1,0 +1,16 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.memorycompanion.co.uk" }],
+      "destination": "https://memorycompanion.co.uk/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "https://docs.google.com/document/d/e/2PACX-1vTEak-sOVvBkolDLcH1PphFLBs0_xQeAZkmBdql3I4C4r8Pjz9U70lf0uoEQLc1DQMmlDQRrqnxO266/pub",
+      "permanent": false
+    }
+  ]
+}
