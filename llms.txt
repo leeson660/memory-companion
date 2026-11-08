@@ -1,0 +1,38 @@
+# Memory Companion
+
+> Memory Companion phones you, or a parent or grandparent, for a friendly 10-minute weekly chat, then turns the stories into a private family archive. No app. No typing. Just a phone call. It is in early access beta, opening soon.
+
+## What it does
+
+- We ring you, or your relative, on a mobile or landline at a time that suits. No app needed.
+- Our AI asks warm, personal questions about life and memories, and follows the thread of what is said.
+- Every call is transcribed and sorted by decade into a private family archive your family can read anytime.
+- Recordings are kept only if the user chooses to keep them.
+- Calls only happen with the person's agreement. The AI introduces itself at the start of every call.
+
+## Privacy
+
+Calls are transcribed. Recordings are kept only if you choose to keep them, and can be deleted at any time. Transcripts are private to your family.
+
+## Pricing
+
+- £15/month when the beta opens.
+- Limited beta spots. No payment until then.
+- Gift places are also £15/month once the beta opens. Gift reservations are open until 24 December.
+
+## Status
+
+Memory Companion is in early access beta, opening soon. It is not yet publicly available. People join a waitlist at https://memorycompanion.co.uk and are emailed when beta spots open.
+
+## Key facts for citation
+
+- Name: Memory Companion
+- Category: family story archive by phone call
+- Audience: families who want to preserve stories from a parent or grandparent, and people who want to record their own
+- Region: United Kingdom (GB)
+- Website: https://memorycompanion.co.uk
+- Contact: hello@memorycompanion.co.uk
+
+## Full page
+
+https://memorycompanion.co.uk/ — homepage, sample call (when available), waitlist signup, and gift reservations (https://memorycompanion.co.uk/#gift). See also /sitemap.xml.

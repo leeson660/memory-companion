@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Companion — Preserve your stories for your family | UK</title>
+<meta name="description" content="Memory Companion phones you, or a parent or grandparent, for a friendly 10-minute weekly chat, then turns the stories into a private family archive. No app. No typing. Just a phone call. Join the UK waitlist.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://memorycompanion.co.uk/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Memory Companion">
+<meta property="og:title" content="Memory Companion — Preserve your stories for your family">
+<meta property="og:description" content="A friendly 10-minute weekly phone call that turns your stories into a private family archive. No app. No typing.">
+<meta property="og:url" content="https://memorycompanion.co.uk/">
+<meta property="og:image" content="https://memorycompanion.co.uk/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Memory Companion — Preserve your stories for your family">
+<meta name="twitter:description" content="A friendly 10-minute weekly phone call that turns your stories into a private family archive. No app. No typing.">
+<meta name="twitter:image" content="https://memorycompanion.co.uk/og-image.png">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DHM0FTW1Z8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DHM0FTW1Z8');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Memory Companion",
+  "url": "https://memorycompanion.co.uk",
+  "logo": "https://memorycompanion.co.uk/logo.svg",
+  "description": "A phone-call service that turns a friendly weekly chat into a private family archive of stories.",
+  "areaServed": "GB",
+  "email": "hello@memorycompanion.co.uk",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "hello@memorycompanion.co.uk",
+    "contactType": "customer support",
+    "areaServed": "GB"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Memory Companion",
+  "serviceType": "Family story archive by phone call",
+  "description": "A friendly 10-minute weekly phone call that turns stories into a private, transcribed family archive. Early access beta, opening soon.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Memory Companion",
+    "url": "https://memorycompanion.co.uk"
+  },
+  "areaServed": "GB",
+  "offers": {
+    "@type": "Offer",
+    "name": "Memory Companion beta subscription",
+    "description": "£15/month when the beta opens. Limited beta spots. No payment until then.",
+    "price": "15.00",
+    "priceCurrency": "GBP",
+    "url": "https://memorycompanion.co.uk",
+    "availability": "https://schema.org/PreOrder"
+  }
+}
+</script>
+
+<style>
+  :root{
+    --paper: #F3EEE4;
+    --card: #FFFDF9;
+    --ink: #2A2724;
+    --ink-soft: #5B564E;
+    --amber: #B9822E;
+    --amber-deep: #8F631F;
+    --harbor: #3F6B70;
+    --harbor-deep: #2C4C50;
+    --line: #E2D8C6;
+    --success-bg: #EAF2E9;
+    --success-ink: #33502F;
+    --radius: 18px;
+    --max: 1120px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Public Sans', -apple-system, sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display{
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  em{ font-style: italic; color: var(--amber-deep); }
+
+  a{ color: var(--harbor-deep); }
+
+  .visually-hidden{
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .skip-link{
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 20px;
+    border-radius: 0 0 8px 0;
+    z-index: 100;
+  }
+  .skip-link:focus{ left: 0; }
+
+  :focus-visible{
+    outline: 3px solid var(--harbor);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Header ---------- */
+  .site-header{
+    padding: 28px 0;
+  }
+  .site-header .wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .logo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Newsreader', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .logo-mark{
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, var(--amber) 0%, var(--harbor) 100%);
+    flex-shrink: 0;
+  }
+  .header-cta{
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--ink);
+    text-decoration: none;
+    border: 2px solid var(--ink);
+    padding: 10px 20px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .header-cta:hover{ background: var(--ink); color: var(--paper); }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding: 40px 0 80px; }
+  .hero .wrap{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .eyebrow{
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--harbor-deep);
+    background: rgba(63,107,112,0.1);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+  }
+  .hero h1{
+    font-size: clamp(2.3rem, 4vw + 1rem, 3.6rem);
+    margin-bottom: 22px;
+  }
+  .hero .lede{
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin-bottom: 36px;
+  }
+
+  /* Waitlist + gift forms */
+  .waitlist-form{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 480px;
+  }
+  .waitlist-form input[type="email"],
+  .waitlist-form input[type="text"],
+  .waitlist-form select{
+    flex: 1 1 240px;
+    min-height: 56px;
+    padding: 0 20px;
+    font-size: 1.05rem;
+    font-family: inherit;
+    color: var(--ink);
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 12px;
+  }
+  .waitlist-form select{
+    flex-basis: 100%;
+    appearance: auto;
+  }
+  .waitlist-form select:invalid{ color: var(--ink-soft); }
+  .waitlist-form input::placeholder{ color: var(--ink-soft); opacity: 0.8; }
+  .waitlist-form input:focus,
+  .waitlist-form select:focus{ border-color: var(--harbor); outline: none; }
+  .waitlist-form .field-full{ flex-basis: 100%; }
+
+  .field-label{
+    display: block;
+    flex-basis: 100%;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: -4px;
+  }
+
+  .btn-primary{
+    min-height: 56px;
+    padding: 0 30px;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--paper);
+    background: var(--ink);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-primary:hover{ background: var(--harbor-deep); }
+  .btn-primary:disabled{ opacity: 0.6; cursor: wait; }
+
+  .form-note{
+    margin-top: 14px;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
+  .price-line{
+    margin-top: 20px;
+    font-size: 1.05rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .success-state{
+    display: none;
+    max-width: 480px;
+    background: var(--success-bg);
+    color: var(--success-ink);
+    border-radius: 12px;
+    padding: 20px 24px;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .success-state.show{ display: block; }
+  .waitlist-form.hide{ display: none; }
+
+  .hp-field{
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .error-state{
+    display: none;
+    max-width: 480px;
+    background: #F7E9E2;
+    color: #7A3B22;
+    border-radius: 12px;
+    padding: 20px 24px;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .error-state.show{ display: block; }
+
+  /* ---------- Signature: The Memory Card ---------- */
+  .memory-card{
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 18px 18px 26px;
+    box-shadow: 0 24px 48px -20px rgba(42,39,36,0.28);
+    max-width: 400px;
+    margin: 0 auto;
+    transform: rotate(1.5deg);
+  }
+  .memory-photo{
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  .memory-photo svg{ width: 100%; height: 100%; display: block; }
+
+  .memory-labels{
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .memory-label{
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 0.98rem;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: reveal 0.6s ease forwards;
+  }
+  .memory-label .tag{
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--harbor-deep);
+    min-width: 62px;
+  }
+  .memory-label .val{ color: var(--ink); font-weight: 500; }
+  .memory-label:nth-child(1){ animation-delay: 0.4s; }
+  .memory-label:nth-child(2){ animation-delay: 1.1s; }
+  .memory-label:nth-child(3){ animation-delay: 1.8s; }
+
+  .memory-caption{
+    margin-top: 16px;
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  @keyframes reveal{
+    to{ opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .memory-label{ animation: none; opacity: 1; transform: none; }
+    html{ scroll-behavior: auto; }
+  }
+
+  /* ---------- Sections ---------- */
+  .section{ padding: 64px 0; }
+  .section-alt{ background: var(--card); }
+  .section-head{ max-width: 60ch; margin-bottom: 48px; }
+  .section-head h2{ font-size: clamp(1.8rem, 2.5vw + 1rem, 2.4rem); margin-bottom: 14px; }
+  .section-head p{ color: var(--ink-soft); font-size: 1.1rem; }
+
+  /* ---------- Sample call ---------- */
+  .sample-call{ padding: 0 0 64px; }
+  .sample-call .wrap{ max-width: 760px; }
+  .sample-call h2{ font-size: clamp(1.6rem, 2vw + 1rem, 2rem); margin-bottom: 18px; }
+  .sample-call audio{
+    width: 100%;
+    display: block;
+    border-radius: 999px;
+  }
+  .sample-call .caption{
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Founder note ---------- */
+  .founder-note{
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .founder-note blockquote{
+    margin: 0;
+    padding: 8px 0 8px 28px;
+    border-left: 3px solid var(--amber);
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .founder-note cite{
+    display: block;
+    margin-top: 18px;
+    font-family: 'Public Sans', sans-serif;
+    font-style: normal;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Problem ---------- */
+  .problem-head{ max-width: 720px; }
+  .problem-head h2{ font-size: clamp(1.8rem, 2.5vw + 1rem, 2.4rem); margin-bottom: 18px; }
+  .problem-head p{ color: var(--ink-soft); font-size: 1.1rem; }
+
+  /* ---------- How it works ---------- */
+  .steps{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .step{ border-top: 3px solid var(--amber); padding-top: 20px; }
+  .step-num{
+    font-family: 'Newsreader', serif;
+    font-size: 1.6rem;
+    color: var(--amber-deep);
+    margin-bottom: 10px;
+  }
+  .step h3{ font-size: 1.25rem; margin-bottom: 10px; font-weight: 600; }
+  .step p{ color: var(--ink-soft); font-size: 1.02rem; }
+
+  /* ---------- Legacy ---------- */
+  .legacy{ text-align: center; }
+  .legacy h2{ font-size: clamp(1.8rem, 2.5vw + 1rem, 2.4rem); max-width: 22ch; margin: 0 auto 18px; }
+  .legacy p{ color: var(--ink-soft); font-size: 1.1rem; max-width: 60ch; margin: 0 auto; }
+  .legacy .coming-later{
+    margin-top: 28px;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  /* ---------- Gift ---------- */
+  .gift-layout{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .gift-layout h2{ font-size: clamp(1.8rem, 2.5vw + 1rem, 2.4rem); margin-bottom: 16px; }
+  .gift-layout p{ color: var(--ink-soft); font-size: 1.05rem; }
+  .gift-layout .gift-form-wrap .waitlist-form{ max-width: 100%; }
+
+  /* ---------- Why join now ---------- */
+  .reassure-list{
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .reassure-list li{
+    position: relative;
+    padding-left: 32px;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+  }
+  .reassure-list li::before{
+    content: '';
+    position: absolute;
+    left: 0; top: 6px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--amber);
+  }
+  .reassure-list strong{ color: var(--ink); font-weight: 600; }
+
+  /* ---------- Footer CTA ---------- */
+  .footer-cta{
+    text-align: center;
+    padding: 80px 0 60px;
+  }
+  .footer-cta h2{ font-size: clamp(1.9rem, 3vw + 1rem, 2.6rem); margin-bottom: 16px; }
+  .footer-cta p{ color: var(--ink-soft); margin-bottom: 32px; }
+  .footer-cta .waitlist-form,
+  .footer-cta .success-state,
+  .footer-cta .error-state{ margin: 0 auto; }
+  .footer-cta .waitlist-form{ justify-content: center; }
+  .footer-cta .waitlist-form .field-label{ text-align: left; }
+
+  /* ---------- Privacy ---------- */
+  .privacy-note{
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+  }
+  .privacy-note a{ color: var(--harbor-deep); }
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 32px 0;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+  footer .wrap{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer a{ color: var(--ink-soft); margin-left: 18px; }
+
+  @media (max-width: 900px){
+    .hero .wrap{ grid-template-columns: 1fr; }
+    .memory-card{ max-width: 340px; }
+    .steps{ grid-template-columns: 1fr; }
+    .gift-layout{ grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="#" class="logo"><span class="logo-mark" aria-hidden="true"></span>Memory Companion</a>
+    <a href="#waitlist-top" class="header-cta">Join the waitlist</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">🔒 Early Access Beta – Opening Soon</span>
+        <h1>Preserve your stories for your family.</h1>
+        <p class="lede">Memory Companion phones you, or a parent or grandparent, for a friendly 10-minute weekly chat, then turns the stories into a private family archive. No app. No typing. Just a phone call.</p>
+
+        <form class="waitlist-form" id="waitlist-top" data-form="waitlist">
+          <label for="email-top" class="visually-hidden">Email address</label>
+          <input type="email" id="email-top" name="email" placeholder="Your email address" autocomplete="email" required>
+          <label for="who-top" class="field-label">Who is this for?</label>
+          <select id="who-top" name="who_for" required>
+            <option value="" disabled selected>Choose one</option>
+            <option value="me">Me</option>
+            <option value="parent_or_grandparent">A parent or grandparent</option>
+            <option value="both">Both</option>
+          </select>
+          <input type="hidden" name="utm_source" data-utm="utm_source">
+          <input type="hidden" name="utm_medium" data-utm="utm_medium">
+          <input type="hidden" name="utm_campaign" data-utm="utm_campaign">
+          <div class="hp-field" aria-hidden="true">
+            <label for="website-top">Leave this field empty</label>
+            <input type="text" id="website-top" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="cf-turnstile field-full" data-sitekey="0x4AAAAAADvND274i2nHCcYe" data-action="waitlist-signup" data-appearance="interaction-only" data-theme="light"></div>
+          <button type="submit" class="btn-primary">Join the waitlist</button>
+        </form>
+        <div class="success-state" data-success role="status">You're on the list. We'll email you when Memory Companion is ready.</div>
+        <div class="error-state" data-error role="alert"></div>
+        <p class="price-line">£15/month when the beta opens. Limited beta spots. No payment until then.</p>
+        <p class="form-note">Free to join the waitlist. Unsubscribe anytime. Private to your family.</p>
+      </div>
+
+      <div>
+        <div class="memory-card">
+          <div class="memory-photo">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of two people walking on a beach at golden hour">
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#E7B978"/>
+                  <stop offset="55%" stop-color="#D99B6C"/>
+                  <stop offset="100%" stop-color="#B9822E"/>
+                </linearGradient>
+                <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3F6B70"/>
+                  <stop offset="100%" stop-color="#2C4C50"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="190" fill="url(#sky)"/>
+              <circle cx="320" cy="80" r="34" fill="#FBEBD1"/>
+              <rect y="190" width="400" height="60" fill="url(#sea)"/>
+              <rect y="250" width="400" height="50" fill="#E8DCC4"/>
+              <g transform="translate(175,225)">
+                <circle cx="0" cy="0" r="9" fill="#2A2724"/>
+                <path d="M0 9 L0 34 M0 16 L-11 30 M0 16 L11 26" stroke="#2A2724" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <circle cx="24" cy="4" r="8" fill="#2A2724"/>
+                <path d="M24 12 L24 32 M24 18 L14 30 M24 18 L34 26" stroke="#2A2724" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              </g>
+            </svg>
+          </div>
+          <div class="memory-labels">
+            <div class="memory-label"><span class="tag">Who</span><span class="val">Charlotte, your granddaughter</span></div>
+            <div class="memory-label"><span class="tag">Where</span><span class="val">Brighton beach</span></div>
+            <div class="memory-label"><span class="tag">When</span><span class="val">Last summer</span></div>
+          </div>
+          <p class="memory-caption">Every call, sorted into a private family archive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AUDIO SAMPLE (hidden unless the file exists) ================= -->
+  <section class="sample-call" id="sample-call" hidden aria-labelledby="sample-heading">
+    <div class="wrap">
+      <h2 id="sample-heading">Hear what a call sounds like</h2>
+      <audio id="sample-audio" controls preload="none"></audio>
+      <p class="caption">A sample call. The questions come from our AI voice.</p>
+    </div>
+  </section>
+
+  <!-- ================= FOUNDER NOTE ================= -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <figure class="founder-note" style="margin:0;">
+        <blockquote>
+          My nan and granddad told me so many stories when I was young: their lives, the war, the struggles they went through. I barely remember any of it now, and they're both gone. I'd give a lot to be able to listen back. That's why I'm building this.
+          <cite>– Lee, founder</cite>
+        </blockquote>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= THE PROBLEM ================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="problem-head">
+        <h2>I wish I'd recorded their voice while I could.</h2>
+        <p>Most of us have stories we can no longer quite remember: a first job, how they met, life in another decade, the sound of a laugh. Writing a memoir takes months, and typing on a phone is hard for many people. This makes it as easy as picking up the phone.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How it works</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>A weekly 10-minute call</h3>
+          <p>We ring you, or your relative, on a mobile or landline at a time that suits. No app needed.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Warm, personal questions</h3>
+          <p>Our AI asks about life and memories, and follows the thread of what is said.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>A family archive</h3>
+          <p>Every call is transcribed and sorted by decade into a private archive your family can read anytime. Recordings are kept only if you choose to keep them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= START YOUR LEGACY ================= -->
+  <section class="section">
+    <div class="wrap legacy">
+      <h2>The more you share, the more your family keeps.</h2>
+      <p>Ten minutes a week adds up to roughly 8 hours of stories a year. Start now, and in twenty years your family has a library of your life, told in your own words.</p>
+      <p class="coming-later">Coming later: turn your stories into a printed keepsake book, with chapters from your life, to treasure and pass down.</p>
+    </div>
+  </section>
+
+  <!-- ================= GIFT ================= -->
+  <section class="section section-alt" id="gift">
+    <div class="wrap">
+      <div class="gift-layout">
+        <div>
+          <h2>Or give it as a gift this Christmas</h2>
+          <p>Reserve a beta place for someone you love. Beta calls begin in early 2027, and we'll confirm the start date by email. Gift places are £15/month once the beta opens. No payment until then.</p>
+          <p>We always ask them first: calls only happen if they say yes, and they can pause or stop at any time. Reserve by 24 December.</p>
+        </div>
+        <div class="gift-form-wrap">
+          <form class="waitlist-form" data-form="gift">
+            <label for="gift-email" class="field-label">Your email</label>
+            <input type="email" id="gift-email" name="email" placeholder="Your email address" autocomplete="email" required>
+            <label for="gift-first-name" class="field-label">First name of the person it's for</label>
+            <input type="text" id="gift-first-name" name="first_name" maxlength="50" autocomplete="off" required>
+            <label for="gift-relationship" class="field-label">Your relationship to them</label>
+            <select id="gift-relationship" name="relationship" required>
+              <option value="" disabled selected>Choose one</option>
+              <option value="Mum">Mum</option>
+              <option value="Dad">Dad</option>
+              <option value="Nan">Nan</option>
+              <option value="Grandad">Grandad</option>
+              <option value="Other">Other</option>
+            </select>
+            <input type="hidden" name="utm_source" data-utm="utm_source">
+            <input type="hidden" name="utm_medium" data-utm="utm_medium">
+            <input type="hidden" name="utm_campaign" data-utm="utm_campaign">
+            <div class="hp-field" aria-hidden="true">
+              <label for="website-gift">Leave this field empty</label>
+              <input type="text" id="website-gift" name="website" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="cf-turnstile field-full" data-sitekey="0x4AAAAAADvND274i2nHCcYe" data-action="gift-reservation" data-appearance="interaction-only" data-theme="light"></div>
+            <button type="submit" class="btn-primary">Reserve a gift place</button>
+          </form>
+          <div class="success-state" data-success role="status">Thank you. We've reserved a beta place, and we've emailed you a note you can share with them.</div>
+          <div class="error-state" data-error role="alert"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY JOIN NOW ================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Why join now</h2>
+      </div>
+      <ul class="reassure-list">
+        <li><strong>First access:</strong> be among the first families to try the live call feature.</li>
+        <li><strong>Shape the product:</strong> request prompt packs such as military service, emigration or family recipes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= BOTTOM CTA ================= -->
+  <section class="footer-cta section-alt">
+    <div class="wrap">
+      <h2>Start your family's legacy today.</h2>
+      <p>We'll email you the moment beta spots open.</p>
+      <form class="waitlist-form" data-form="waitlist">
+        <label for="email-bottom" class="visually-hidden">Email address</label>
+        <input type="email" id="email-bottom" name="email" placeholder="Your email address" autocomplete="email" required>
+        <label for="who-bottom" class="field-label">Who is this for?</label>
+        <select id="who-bottom" name="who_for" required>
+          <option value="" disabled selected>Choose one</option>
+          <option value="me">Me</option>
+          <option value="parent_or_grandparent">A parent or grandparent</option>
+          <option value="both">Both</option>
+        </select>
+        <input type="hidden" name="utm_source" data-utm="utm_source">
+        <input type="hidden" name="utm_medium" data-utm="utm_medium">
+        <input type="hidden" name="utm_campaign" data-utm="utm_campaign">
+        <div class="hp-field" aria-hidden="true">
+          <label for="website-bottom">Leave this field empty</label>
+          <input type="text" id="website-bottom" name="website" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="cf-turnstile field-full" data-sitekey="0x4AAAAAADvND274i2nHCcYe" data-action="waitlist-signup" data-appearance="interaction-only" data-theme="light"></div>
+        <button type="submit" class="btn-primary">Get early access</button>
+      </form>
+      <div class="success-state" data-success role="status">You're on the list. We'll email you when Memory Companion is ready.</div>
+      <div class="error-state" data-error role="alert"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="flex-direction: column; align-items: center; text-align: center;">
+    <p class="privacy-note" style="margin: 0 0 24px;">Calls are transcribed. Recordings are kept only if you choose to keep them, and can be deleted at any time. The AI introduces itself at the start of every call, and calls only happen with the person's agreement. Transcripts are private to your family. <a href="/privacy">Read our privacy policy</a>.</p>
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; width: 100%;">
+      <span>&copy; 2026 Memory Companion. A memorycompanion.co.uk project.</span>
+      <span><a href="/privacy">Privacy</a><a href="mailto:hello@memorycompanion.co.uk">Contact</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+  // Capture UTM params from the URL and drop them into every form's hidden fields
+  (function(){
+    var params = new URLSearchParams(window.location.search);
+    document.querySelectorAll('[data-utm]').forEach(function(field){
+      var key = field.getAttribute('data-utm');
+      if(params.has(key)) field.value = params.get(key);
+    });
+  })();
+
+  // Show the sample call only if the audio file actually exists.
+  // If it is missing, the section stays hidden.
+  (function(){
+    var section = document.getElementById('sample-call');
+    var audio = document.getElementById('sample-audio');
+    if(!section || !audio) return;
+    fetch('/audio/sample-call.mp3', { method: 'HEAD' }).then(function(resp){
+      var type = resp.headers.get('content-type') || '';
+      if(resp.ok && type.indexOf('audio/') === 0){
+        audio.src = '/audio/sample-call.mp3';
+        section.hidden = false;
+      }
+    }).catch(function(){ /* leave hidden */ });
+  })();
+
+  document.querySelectorAll('[data-form]').forEach(function(form){
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+
+      // Honeypot: real visitors never fill this in. Bots that auto-fill every
+      // field will trip it. Fail silently — no need to tip off a bot.
+      var honeypot = form.querySelector('input[name="website"]');
+      if (honeypot && honeypot.value) return;
+
+      var type = form.getAttribute('data-form') || 'waitlist';
+      var container = form.parentElement;
+      var errorEl = container.querySelector('[data-error]');
+      var successEl = container.querySelector('[data-success]');
+      if (errorEl) { errorEl.classList.remove('show'); errorEl.textContent = ''; }
+
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var originalLabel = submitBtn ? submitBtn.textContent : '';
+
+      var turnstileField = form.querySelector('[name="cf-turnstile-response"]');
+      var turnstileToken = turnstileField ? turnstileField.value : '';
+      if (!turnstileToken) {
+        if (errorEl) {
+          errorEl.textContent = "Please complete the verification check, then try again.";
+          errorEl.classList.add('show');
+        }
+        return;
+      }
+
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+
+      var payload = {
+        type: type,
+        email: form.querySelector('input[type="email"]').value.trim(),
+        utm_source: form.querySelector('[data-utm="utm_source"]').value || null,
+        utm_medium: form.querySelector('[data-utm="utm_medium"]').value || null,
+        utm_campaign: form.querySelector('[data-utm="utm_campaign"]').value || null,
+        turnstileToken: turnstileToken
+      };
+      if (type === 'gift') {
+        payload.first_name = form.querySelector('input[name="first_name"]').value.trim();
+        payload.relationship = form.querySelector('select[name="relationship"]').value;
+      } else {
+        payload.who_for = form.querySelector('select[name="who_for"]').value;
+      }
+
+      function resetTurnstile(){
+        var widget = form.querySelector('.cf-turnstile');
+        if (widget && window.turnstile) window.turnstile.reset(widget);
+      }
+
+      try {
+        const resp = await fetch('/api/join-waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+
+        if (!data.success) {
+          throw new Error(data.error || 'unknown_error');
+        }
+
+        if (typeof gtag === 'function') {
+          gtag('event', type === 'gift' ? 'gift_reservation' : 'waitlist_signup', {
+            utm_source: payload.utm_source || '(none)',
+            utm_medium: payload.utm_medium || '(none)',
+            utm_campaign: payload.utm_campaign || '(none)'
+          });
+        }
+
+        form.classList.add('hide');
+        if (successEl) {
+          if (type === 'gift') {
+            successEl.textContent = "Thank you. We've reserved a beta place, and we've emailed you a note you can share with them.";
+          } else {
+            successEl.textContent = data.duplicate
+              ? "You're already on the list — we'll be in touch."
+              : "You're on the list. We'll email you when Memory Companion is ready.";
+          }
+          successEl.classList.add('show');
+        }
+
+      } catch (err) {
+        if (errorEl) {
+          errorEl.textContent = "Something didn't save. Please try again in a moment.";
+          errorEl.classList.add('show');
+        }
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
+        resetTurnstile();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
