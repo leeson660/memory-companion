@@ -422,6 +422,22 @@
     margin: 0 auto;
     text-align: left;
   }
+  .founder-row{
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+  }
+  .founder-photo{
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 16px 32px -18px rgba(42,39,36,0.35);
+  }
+  @media (max-width: 600px){
+    .founder-row{ flex-direction: column; gap: 20px; }
+  }
   .founder-note blockquote{
     margin: 0;
     padding: 8px 0 8px 28px;
@@ -652,10 +668,13 @@
   <section class="section section-alt">
     <div class="wrap">
       <figure class="founder-note" style="margin:0;">
-        <blockquote>
-          My nan and granddad told me so many stories when I was young: their lives, the war, the struggles they went through. I barely remember any of it now, and they're both gone. I'd give a lot to be able to listen back. That's why I'm building this.
-          <cite>– Lee, founder</cite>
-        </blockquote>
+        <div class="founder-row">
+          <img class="founder-photo" src="/founder.jpg" width="120" height="120" alt="Lee, founder of Memory Companion" loading="lazy">
+          <blockquote>
+            My nan and granddad told me so many stories when I was young: their lives, the war, the struggles they went through. I barely remember any of it now, and they're both gone. I'd give a lot to be able to listen back. That's why I'm building this.
+            <cite>– Lee, founder</cite>
+          </blockquote>
+        </div>
       </figure>
     </div>
   </section>
