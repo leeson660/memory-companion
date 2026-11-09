@@ -202,7 +202,7 @@
   .hero{ padding: 40px 0 80px; }
   .hero .wrap{
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     gap: 56px;
     align-items: center;
   }
@@ -251,6 +251,11 @@
   }
   .waitlist-form select{
     flex-basis: 100%;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
     appearance: auto;
   }
   .waitlist-form select:invalid{ color: var(--ink-soft); }
@@ -564,7 +569,7 @@
   footer a{ color: var(--ink-soft); margin-left: 18px; }
 
   @media (max-width: 900px){
-    .hero .wrap{ grid-template-columns: 1fr; }
+    .hero .wrap{ grid-template-columns: minmax(0, 1fr); }
     .memory-card{ max-width: 340px; }
     .steps{ grid-template-columns: 1fr; }
     .gift-layout{ grid-template-columns: 1fr; gap: 32px; }
