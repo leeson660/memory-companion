@@ -30,32 +30,47 @@
 <meta name="twitter:description" content="A friendly 10-minute weekly phone call that turns your stories into a private family archive. No app. No typing.">
 <meta name="twitter:image" content="https://memorycompanion.co.uk/og-image.png">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DHM0FTW1Z8"></script>
+<!-- Analytics (Google Analytics) and advertising (Meta Pixel) load only after the
+     visitor accepts cookies in the banner. Nothing is set or sent before that. -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-DHM0FTW1Z8');
-</script>
+  (function(){
+    var CONSENT_KEY = 'mc_cookie_consent';
+    var GA_ID = 'G-DHM0FTW1Z8';
+    var PIXEL_ID = '1079673851789861';
 
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1079673851789861');
-fbq('track', 'PageView');
+    function loadTracking(){
+      if (window.mcTrackingLoaded) return;
+      window.mcTrackingLoaded = true;
+
+      // Google Analytics
+      var ga = document.createElement('script');
+      ga.async = true;
+      ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(ga);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+
+      // Meta Pixel
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', PIXEL_ID);
+      fbq('track', 'PageView');
+    }
+
+    window.mcLoadTracking = loadTracking;
+
+    var choice = null;
+    try { choice = localStorage.getItem(CONSENT_KEY); } catch (e) {}
+    if (choice === 'accepted') loadTracking();
+  })();
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1079673851789861&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -586,6 +601,57 @@ src="https://www.facebook.com/tr?id=1079673851789861&ev=PageView&noscript=1"
   }
   footer a{ color: var(--ink-soft); margin-left: 18px; }
 
+  /* ---------- Cookie banner ---------- */
+  .cookie-banner{
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: 720px;
+    margin: 0 auto;
+    z-index: 50;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    box-shadow: 0 20px 40px -20px rgba(42,39,36,0.35);
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
+  .cookie-banner[hidden]{ display: none; }
+  .cookie-banner p{
+    margin: 0;
+    flex: 1 1 320px;
+    color: var(--ink-soft);
+  }
+  .cookie-banner a{ color: var(--harbor-deep); }
+  .cookie-actions{
+    display: flex;
+    gap: 10px;
+  }
+  .cookie-actions button{
+    min-height: 46px;
+    padding: 0 22px;
+    border-radius: 12px;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.98rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .cookie-actions .btn-primary{ min-height: 46px; padding: 0 22px; font-size: 0.98rem; }
+  .cookie-actions .btn-secondary{
+    background: transparent;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+  }
+  .cookie-actions .btn-secondary:hover{ background: var(--ink); color: var(--paper); }
+
   @media (max-width: 900px){
     .hero .wrap{ grid-template-columns: minmax(0, 1fr); }
     .memory-card{ max-width: 340px; }
@@ -837,13 +903,56 @@ src="https://www.facebook.com/tr?id=1079673851789861&ev=PageView&noscript=1"
     <p class="privacy-note" style="margin: 0 0 24px;">Calls are transcribed. Recordings are kept only if you choose to keep them, and can be deleted at any time. The AI introduces itself at the start of every call, and calls only happen with the person's agreement. Transcripts are private to your family. <a href="/privacy">Read our privacy policy</a>.</p>
     <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; width: 100%;">
       <span>&copy; 2026 Memory Companion. A memorycompanion.co.uk project.</span>
-      <span><a href="/privacy">Privacy</a><a href="mailto:hello@memorycompanion.co.uk">Contact</a></span>
+      <span><a href="/privacy">Privacy</a><a href="#" id="cookie-settings">Cookie settings</a><a href="mailto:hello@memorycompanion.co.uk">Contact</a></span>
     </div>
   </div>
 </footer>
 
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie choices" aria-live="polite" hidden>
+  <p>We use cookies to measure visits and see which pages help people join the waitlist. Analytics and advertising cookies are only set if you accept. <a href="/privacy">Privacy policy</a></p>
+  <div class="cookie-actions">
+    <button type="button" class="btn-secondary" id="cookie-reject">Reject</button>
+    <button type="button" class="btn-primary" id="cookie-accept">Accept</button>
+  </div>
+</div>
+
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
+  // Cookie banner: asks first, stores the choice, and only then loads tracking.
+  (function(){
+    var CONSENT_KEY = 'mc_cookie_consent';
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+
+    function getChoice(){
+      try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
+    }
+    function setChoice(value){
+      try { localStorage.setItem(CONSENT_KEY, value); } catch (e) {}
+    }
+
+    document.getElementById('cookie-accept').addEventListener('click', function(){
+      setChoice('accepted');
+      banner.hidden = true;
+      if (window.mcLoadTracking) window.mcLoadTracking();
+    });
+
+    document.getElementById('cookie-reject').addEventListener('click', function(){
+      setChoice('rejected');
+      banner.hidden = true;
+      // Tracking already loaded this visit: reload so it stops from now on.
+      if (window.mcTrackingLoaded) location.reload();
+    });
+
+    var settings = document.getElementById('cookie-settings');
+    if (settings) settings.addEventListener('click', function(e){
+      e.preventDefault();
+      banner.hidden = false;
+    });
+
+    if (!getChoice()) banner.hidden = false;
+  })();
+
   // Capture UTM params from the URL and drop them into every form's hidden fields
   (function(){
     var params = new URLSearchParams(window.location.search);
