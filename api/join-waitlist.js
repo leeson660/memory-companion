@@ -11,7 +11,8 @@
 // Schema changes this needs are in db/waitlist-gift-migration.sql.
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const WHO_FOR = ['me', 'parent_or_grandparent', 'both'];
+// Optional on the waitlist form. Empty means "not answered" and is stored as null.
+const WHO_FOR = ['me', 'parent_or_grandparent', 'gift'];
 const RELATIONSHIPS = ['Mum', 'Dad', 'Nan', 'Grandad', 'Other'];
 const FIRST_NAME_RE = /^[\p{L}][\p{L}' -]{0,49}$/u;
 
@@ -184,7 +185,8 @@ export default async function handler(req, res) {
   if (typeof email !== 'string' || !EMAIL_RE.test(email.trim())) {
     return res.status(400).json({ success: false, error: 'invalid_email' });
   }
-  if (type === 'waitlist' && !WHO_FOR.includes(who_for)) {
+  const whoForValue = typeof who_for === 'string' && who_for.trim() ? who_for.trim() : null;
+  if (type === 'waitlist' && whoForValue !== null && !WHO_FOR.includes(whoForValue)) {
     return res.status(400).json({ success: false, error: 'invalid_who_for' });
   }
   if (type === 'gift') {
@@ -227,7 +229,7 @@ export default async function handler(req, res) {
     utm_campaign: utm_campaign || null,
   };
   if (type === 'waitlist') {
-    row.who_for = who_for;
+    row.who_for = whoForValue;
   } else {
     row.recipient_first_name = first_name.trim();
     row.relationship = relationship;

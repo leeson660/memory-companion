@@ -415,6 +415,24 @@
   .memory-label:nth-child(2){ animation-delay: 1.1s; }
   .memory-label:nth-child(3){ animation-delay: 1.8s; }
 
+  .example-label{
+    margin: 18px 0 6px;
+    font-weight: 700;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--amber-deep);
+  }
+  .example-story{
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .optional{
+    font-weight: 400;
+    color: var(--ink-soft);
+  }
   .memory-caption{
     margin-top: 16px;
     font-family: 'Newsreader', serif;
@@ -684,11 +702,12 @@
         <form class="waitlist-form" id="waitlist-top" data-form="waitlist">
           <label for="email-top" class="visually-hidden">Email address</label>
           <input type="email" id="email-top" name="email" placeholder="Your email address" autocomplete="email" required>
-          <label for="who-top" class="field-label">Who is this for?</label>
-          <select id="who-top" name="who_for" required>
-            <option value="" disabled selected>Choose one</option>
-            <option value="me">For myself (building my own family archive)</option>
-            <option value="parent_or_grandparent">For a parent or grandparent (gifting / managing for them)</option>
+          <label for="who-top" class="field-label">Who is this for? <span class="optional">(optional)</span></label>
+          <select id="who-top" name="who_for">
+            <option value="" selected>Choose one, if you like</option>
+            <option value="me">For myself</option>
+            <option value="parent_or_grandparent">For a parent or grandparent</option>
+            <option value="gift">As a gift for someone else</option>
           </select>
           <input type="hidden" name="utm_source" data-utm="utm_source">
           <input type="hidden" name="utm_medium" data-utm="utm_medium">
@@ -702,7 +721,6 @@
         </form>
         <div class="success-state" data-success role="status">You're on the list. We'll email you when Memory Companion is ready.</div>
         <div class="error-state" data-error role="alert"></div>
-        <p class="price-line">£15/month when the beta opens. Limited beta spots. No payment until then.</p>
         <p class="form-note">Free to join the waitlist. Unsubscribe anytime. Private to your family.</p>
       </div>
 
@@ -738,6 +756,8 @@
             <div class="memory-label"><span class="tag">Where</span><span class="val">Brighton beach</span></div>
             <div class="memory-label"><span class="tag">When</span><span class="val">Last summer</span></div>
           </div>
+          <p class="example-label">Example of a finished keepsake</p>
+          <p class="example-story">In the summer of 1962, Margaret left the mill to work in a seaside café in Brighton. She remembers the salt air, the Monday she burned the scones, and the sailor who came in every Friday for tea. "It was the happiest summer of my life," she said.</p>
           <p class="memory-caption">Every call, sorted into a private family archive.</p>
         </div>
       </div>
@@ -875,11 +895,12 @@
       <form class="waitlist-form" data-form="waitlist">
         <label for="email-bottom" class="visually-hidden">Email address</label>
         <input type="email" id="email-bottom" name="email" placeholder="Your email address" autocomplete="email" required>
-        <label for="who-bottom" class="field-label">Who is this for?</label>
-        <select id="who-bottom" name="who_for" required>
-          <option value="" disabled selected>Choose one</option>
-          <option value="me">For myself (building my own family archive)</option>
-          <option value="parent_or_grandparent">For a parent or grandparent (gifting / managing for them)</option>
+        <label for="who-bottom" class="field-label">Who is this for? <span class="optional">(optional)</span></label>
+        <select id="who-bottom" name="who_for">
+          <option value="" selected>Choose one, if you like</option>
+          <option value="me">For myself</option>
+          <option value="parent_or_grandparent">For a parent or grandparent</option>
+          <option value="gift">As a gift for someone else</option>
         </select>
         <input type="hidden" name="utm_source" data-utm="utm_source">
         <input type="hidden" name="utm_medium" data-utm="utm_medium">
