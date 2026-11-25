@@ -619,6 +619,119 @@
   }
   footer a{ color: var(--ink-soft); margin-left: 18px; }
 
+  /* ---------- Audio overview player ---------- */
+  .audio-overview{ padding: 0 0 56px; }
+  #waitlist-top{ scroll-margin-top: 24px; }
+  .mc-player{
+    max-width: 560px;
+    margin: 0 auto;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    box-shadow: 0 20px 40px -24px rgba(42,39,36,0.25);
+  }
+  .mc-label{
+    margin: 0 0 16px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .mc-row{
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  .mc-badge-wrap{
+    position: relative;
+    width: 96px;
+    height: 96px;
+    flex-shrink: 0;
+  }
+  .mc-halo{
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 3px solid var(--amber);
+    box-shadow: 0 0 22px 4px rgba(185,130,46,0.35);
+    opacity: 0.45;
+    transform: scale(1);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .mc-badge{
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mc-badge .logo-mark{ width: 56px; height: 56px; }
+  .mc-controls{
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .mc-toggle{
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mc-toggle:hover{ background: var(--harbor-deep); }
+  .mc-toggle svg{ width: 24px; height: 24px; fill: currentColor; }
+  .mc-toggle .icon-pause{ display: none; }
+  .mc-player.is-playing .mc-toggle .icon-play{ display: none; }
+  .mc-player.is-playing .mc-toggle .icon-pause{ display: inline; }
+  .mc-track{ flex: 1; min-width: 0; }
+  .mc-track input[type="range"]{ width: 100%; accent-color: var(--amber); }
+  .mc-times{
+    margin-top: 4px;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+  /* Fallback when Web Audio is unavailable: a gentle CSS pulse while playing */
+  .mc-player.mc-fallback .mc-halo{ animation: mc-pulse 2.4s ease-in-out infinite; }
+  @keyframes mc-pulse{
+    0%, 100%{ transform: scale(1); opacity: 0.4; }
+    50%{ transform: scale(1.12); opacity: 0.8; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .mc-halo{ transform: none !important; opacity: 1; transition: none; }
+    .mc-player.mc-fallback .mc-halo{ animation: none; }
+  }
+  @media (max-width: 560px){
+    .mc-row{ flex-direction: column; align-items: stretch; }
+    .mc-badge-wrap{ margin: 0 auto; }
+  }
+
+  /* ---------- Bottom CTA ---------- */
+  .cta-button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  .consent-line{
+    margin: 24px auto 0;
+    max-width: 52ch;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
   /* ---------- Cookie banner ---------- */
   .cookie-banner{
     position: fixed;
@@ -764,12 +877,31 @@
     </div>
   </section>
 
-  <!-- ================= AUDIO SAMPLE (hidden unless the file exists) ================= -->
-  <section class="sample-call" id="sample-call" hidden aria-labelledby="sample-heading">
+  <!-- ================= AUDIO OVERVIEW (directly under the hero form) ================= -->
+  <section class="audio-overview" aria-labelledby="audio-heading">
     <div class="wrap">
-      <h2 id="sample-heading">Hear what a call sounds like</h2>
-      <audio id="sample-audio" controls preload="none"></audio>
-      <p class="caption">A sample call. The questions come from our AI voice.</p>
+      <div class="mc-player" id="mc-player">
+        <p class="mc-label" id="audio-heading">Press play (48 secs): Hear how Memory Companion works</p>
+        <div class="mc-row">
+          <div class="mc-badge-wrap">
+            <span class="mc-halo" aria-hidden="true"></span>
+            <span class="mc-badge"><span class="logo-mark" aria-hidden="true"></span></span>
+          </div>
+          <div class="mc-controls">
+            <button type="button" class="mc-toggle" id="mc-toggle" aria-label="Play audio overview">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path class="icon-play" d="M8 5v14l11-7z"/>
+                <path class="icon-pause" d="M6 5h4v14H6zM14 5h4v14h-4z"/>
+              </svg>
+            </button>
+            <div class="mc-track">
+              <input type="range" id="mc-scrub" min="0" max="48" step="0.1" value="0" aria-label="Seek within the audio overview">
+              <div class="mc-times"><span id="mc-current">0:00</span> / <span id="mc-total">0:48</span></div>
+            </div>
+          </div>
+        </div>
+        <audio id="mc-audio" preload="metadata" src="/audio/memory-companion-demo.mp3"></audio>
+      </div>
     </div>
   </section>
 
@@ -882,7 +1014,7 @@
       </div>
       <ul class="reassure-list">
         <li><strong>First access:</strong> be among the first families to try the live call feature.</li>
-        <li><strong>Shape the product:</strong> request prompt packs such as military service, emigration or family recipes.</li>
+        <li><strong>Shape the product:</strong> suggest the topics, milestones, or family questions you'd love your relative to be asked.</li>
       </ul>
     </div>
   </section>
@@ -892,28 +1024,8 @@
     <div class="wrap">
       <h2>Start your family's legacy today.</h2>
       <p>We'll email you the moment beta spots open.</p>
-      <form class="waitlist-form" data-form="waitlist">
-        <label for="email-bottom" class="visually-hidden">Email address</label>
-        <input type="email" id="email-bottom" name="email" placeholder="Your email address" autocomplete="email" required>
-        <label for="who-bottom" class="field-label">Who is this for? <span class="optional">(optional)</span></label>
-        <select id="who-bottom" name="who_for">
-          <option value="" selected>Choose one, if you like</option>
-          <option value="me">For myself</option>
-          <option value="parent_or_grandparent">For a parent or grandparent</option>
-          <option value="gift">As a gift for someone else</option>
-        </select>
-        <input type="hidden" name="utm_source" data-utm="utm_source">
-        <input type="hidden" name="utm_medium" data-utm="utm_medium">
-        <input type="hidden" name="utm_campaign" data-utm="utm_campaign">
-        <div class="hp-field" aria-hidden="true">
-          <label for="website-bottom">Leave this field empty</label>
-          <input type="text" id="website-bottom" name="website" tabindex="-1" autocomplete="off">
-        </div>
-        <div class="cf-turnstile field-full" data-sitekey="0x4AAAAAADvND274i2nHCcYe" data-action="waitlist-signup" data-theme="light"></div>
-        <button type="submit" class="btn-primary">Get early access</button>
-      </form>
-      <div class="success-state" data-success role="status">You're on the list. We'll email you when Memory Companion is ready.</div>
-      <div class="error-state" data-error role="alert"></div>
+      <a href="#waitlist-top" class="btn-primary cta-button">Join the waitlist</a>
+      <p class="consent-line">The AI introduces itself at the start of every call, and calls only happen with the person's agreement.</p>
     </div>
   </section>
 
@@ -983,19 +1095,114 @@
     });
   })();
 
-  // Show the sample call only if the audio file actually exists.
-  // If it is missing, the section stays hidden.
+  // Audio overview player with a voice-reactive halo around the logo.
+  // The Web Audio graph is created inside the Play click (a user gesture),
+  // which Safari and iOS require. If Web Audio is unavailable, a CSS pulse is used.
   (function(){
-    var section = document.getElementById('sample-call');
-    var audio = document.getElementById('sample-audio');
-    if(!section || !audio) return;
-    fetch('/audio/sample-call.mp3', { method: 'HEAD' }).then(function(resp){
-      var type = resp.headers.get('content-type') || '';
-      if(resp.ok && type.indexOf('audio/') === 0){
-        audio.src = '/audio/sample-call.mp3';
-        section.hidden = false;
+    var player = document.getElementById('mc-player');
+    if (!player) return;
+    var audio = document.getElementById('mc-audio');
+    var toggle = document.getElementById('mc-toggle');
+    var scrub = document.getElementById('mc-scrub');
+    var curEl = document.getElementById('mc-current');
+    var totEl = document.getElementById('mc-total');
+    var halo = player.querySelector('.mc-halo');
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var ctx = null, analyser = null, freq = null, rafId = null, webAudioOk = null;
+
+    function fmt(sec){
+      sec = Math.floor(sec || 0);
+      return Math.floor(sec / 60) + ':' + ('0' + (sec % 60)).slice(-2);
+    }
+
+    function setupWebAudio(){
+      if (webAudioOk !== null) return webAudioOk;
+      try {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) { webAudioOk = false; return false; }
+        ctx = new AC();
+        analyser = ctx.createAnalyser();
+        analyser.fftSize = 64;
+        analyser.smoothingTimeConstant = 0.85;
+        ctx.createMediaElementSource(audio).connect(analyser);
+        analyser.connect(ctx.destination);
+        freq = new Uint8Array(analyser.frequencyBinCount);
+        webAudioOk = true;
+      } catch (e) {
+        webAudioOk = false;
       }
-    }).catch(function(){ /* leave hidden */ });
+      return webAudioOk;
+    }
+
+    function setPlaying(isPlaying){
+      player.classList.toggle('is-playing', isPlaying);
+      toggle.setAttribute('aria-label', isPlaying ? 'Pause audio overview' : 'Play audio overview');
+    }
+
+    function tick(){
+      analyser.getByteFrequencyData(freq);
+      var sum = 0;
+      for (var i = 0; i < freq.length; i++) sum += freq[i];
+      var level = Math.min(1, (sum / freq.length) / 180); // 0..1 vocal energy
+      halo.style.transform = 'scale(' + (1 + 0.22 * level).toFixed(3) + ')';
+      halo.style.opacity = (0.35 + 0.65 * level).toFixed(3);
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function startReactive(){
+      if (reduceMotion) return;
+      if (webAudioOk) {
+        if (ctx.state === 'suspended') ctx.resume();
+        if (!rafId) rafId = requestAnimationFrame(tick);
+      } else {
+        player.classList.add('mc-fallback');
+      }
+    }
+
+    function stopReactive(){
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = null;
+      halo.style.transform = '';
+      halo.style.opacity = '';
+      player.classList.remove('mc-fallback');
+    }
+
+    toggle.addEventListener('click', function(){
+      setupWebAudio();
+      if (webAudioOk && ctx.state === 'suspended') ctx.resume();
+      if (audio.paused) {
+        var p = audio.play();
+        if (p && p.catch) p.catch(function(){ setPlaying(false); stopReactive(); });
+      } else {
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener('play', function(){ setPlaying(true); startReactive(); });
+    audio.addEventListener('pause', function(){ setPlaying(false); stopReactive(); });
+    audio.addEventListener('ended', function(){
+      setPlaying(false);
+      stopReactive();
+      audio.currentTime = 0;
+    });
+    audio.addEventListener('loadedmetadata', function(){
+      totEl.textContent = fmt(audio.duration);
+      scrub.max = audio.duration;
+    });
+    audio.addEventListener('timeupdate', function(){
+      curEl.textContent = fmt(audio.currentTime);
+      scrub.value = audio.currentTime;
+    });
+    scrub.addEventListener('input', function(){
+      audio.currentTime = parseFloat(scrub.value);
+      curEl.textContent = fmt(audio.currentTime);
+    });
+    // If the file is missing, hide the whole section rather than show a broken player.
+    audio.addEventListener('error', function(){
+      var section = player.closest('.audio-overview');
+      if (section) section.hidden = true;
+    });
   })();
 
   document.querySelectorAll('[data-form]').forEach(function(form){
